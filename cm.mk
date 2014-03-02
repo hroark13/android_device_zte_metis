@@ -1,5 +1,5 @@
 ## Specify phone tech before including full_phone
-$(call inherit-product, vendor/cm/config/gsm.mk)
+#$(call inherit-product, vendor/cm/config/cdma.mk)
 
 # Release name
 PRODUCT_RELEASE_NAME := metis
@@ -8,7 +8,10 @@ PRODUCT_RELEASE_NAME := metis
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/zte/metis/device_metis.mk)
+$(call inherit-product, device/zte/metis/full_metis.mk)
+
+
+
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := metis
