@@ -50,7 +50,29 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/root/res/images/charger/black.png:root/res/images/charger/black.png \
     $(LOCAL_PATH)/prebuilts/root/sbin/usbconfig:root/sbin/usbconfig	
 
-
+# Audio Prebuilts (leave this here above the call to build/target/product/full.mk or shit gets overwritten) - hroark
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilts/audio/etc/audio_effects.conf:system/etc/audio_effects.conf \
+    $(LOCAL_PATH)/prebuilts/audio/etc/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/prebuilts/audio/etc/audio_policy_8064.conf:system/etc/audio_policy_8064.conf \
+    $(LOCAL_PATH)/prebuilts/audio/etc/init.qcom.audio.sh:system/etc/init.qcom.audio.sh \
+    $(LOCAL_PATH)/prebuilts/audio/etc/media_codecs.xml:system/etc/media_codecs.xml \
+    $(LOCAL_PATH)/prebuilts/audio/etc/snd_soc_msm/snd_soc_msm:system/etc/snd_soc_msm/snd_soc_msm \
+    $(LOCAL_PATH)/prebuilts/audio/etc/snd_soc_msm/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x \
+    $(LOCAL_PATH)/prebuilts/audio/etc/snd_soc_msm/snd_soc_msm_2x_auxpcm:system/etc/snd_soc_msm/snd_soc_msm_2x_auxpcm \
+    $(LOCAL_PATH)/prebuilts/audio/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3 \
+    $(LOCAL_PATH)/prebuilts/audio/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3_auxpcm:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3_auxpcm \
+    $(LOCAL_PATH)/prebuilts/audio/etc/snd_soc_msm/snd_soc_msm_auxpcm:system/etc/snd_soc_msm/snd_soc_msm_auxpcm \
+    $(LOCAL_PATH)/prebuilts/audio/etc/snd_soc_msm/snd_soc_msm_Sitar:system/etc/snd_soc_msm/snd_soc_msm_Sitar \
+    $(LOCAL_PATH)/prebuilts/audio/etc/snd_soc_msm/snd_soc_msm_Sitar_auxpcm:system/etc/snd_soc_msm/snd_soc_msm_Sitar_auxpcm \
+    $(LOCAL_PATH)/prebuilts/audio/etc/snd_soc_msm/snd_soc_msm_Taiko:system/etc/snd_soc_msm/snd_soc_msm_Taiko \
+    $(LOCAL_PATH)/prebuilts/audio/etc/srs/srsmodels.lic:system/etc/srs/srsmodels.lic \
+    $(LOCAL_PATH)/prebuilts/audio/etc/srs/srs_processing.cfg:system/etc/srs/srs_processing.cfg \
+    $(LOCAL_PATH)/prebuilts/audio/lib/libacdbloader.so:system/lib/libacdbloader.so \
+    $(LOCAL_PATH)/prebuilts/audio/lib/libaudcal.so:system/lib/libaudcal.so \
+    $(LOCAL_PATH)/prebuilts/audio/lib/libcsd-client.so:system/lib/libcsd-client.so \
+    $(LOCAL_PATH)/prebuilts/audio/lib/hw/audio.primary.mpq8064.so:system/lib/hw/audio.primary.mpq8064.so \
+    $(LOCAL_PATH)/prebuilts/audio/lib/hw/audio_policy.mpq8064.so:system/lib/hw/audio_policy.mpq8064.so
 
 $(call inherit-product, build/target/product/full.mk)
 
@@ -64,6 +86,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
+    frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
+    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
@@ -85,27 +111,26 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
 
-#    frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
-#    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-#    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-#    frameworks/native/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
-
 
 
 PRODUCT_PACKAGES += \
     applypatch \
     ast-mm-vdec-omx-test \
     com.android.future.usb.accessory \
+    libaudio-resampler \
+    libc2dcolorconvert \
+    libdashplayer \
     libdivxdrmdecrypt \
     libinvensense_hal \
     liblasic \
     liblinenoise \
+    libmedia_jni \
     libmemalloc \
     libmllite \
     libmlplatform \
-    libmmjpeg_interface \
-    libmm-video \
     libmm-omxcore \
+    libmm-video \
+    libmmjpeg_interface \
     libOmxAacEnc \
     libOmxAmrEnc \
     libOmxCore \
@@ -123,12 +148,7 @@ PRODUCT_PACKAGES += \
     mm-venc-omx-test \
     mm-venc-omx-test720p \
     mm-video-driver-test \
-    mm-video-encdrv-test \
-    libaudio-resampler \
-    libdashplayer \
-    libc2dcolorconvert
-
-#    libmedia_jni \
+    mm-video-encdrv-test
 
 
 # Filesystem management tools
@@ -138,16 +158,17 @@ PRODUCT_PACKAGES += \
 
 # QCOM Display
 PRODUCT_PACKAGES += \
-    hwcomposer.msm8960 \
-    gralloc.msm8960 \
     copybit.msm8960 \
-    memtrack.msm8960 \
+    gralloc.msm8960 \
+    hwcomposer.msm8960 \
     libgenlock \
+    libI420colorconvert \
     libmemalloc \
     liboverlay \
     libqdutils \
     libtilerenderer \
-    libI420colorconvert
+    memtrack.msm8960
+
 
 #Adreno200-AU_LINUX_ANDROID_JB_VANILLA_04.02.02.060.053
 PRODUCT_COPY_FILES += \
@@ -193,6 +214,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     gps.default
 
+
 # Audio
 PRODUCT_PACKAGES += \
     alsa.msm8960 \
@@ -205,29 +227,6 @@ PRODUCT_PACKAGES += \
     libaudioutils \
     libaudioparameter \
     tinymix
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilts/audio/etc/audio_effects.conf:system/etc/audio_effects.conf \
-    $(LOCAL_PATH)/prebuilts/audio/etc/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/prebuilts/audio/etc/audio_policy_8064.conf:system/etc/audio_policy_8064.conf \
-    $(LOCAL_PATH)/prebuilts/audio/etc/init.qcom.audio.sh:system/etc/init.qcom.audio.sh \
-    $(LOCAL_PATH)/prebuilts/audio/etc/media_codecs.xml:system/etc/media_codecs.xml \
-    $(LOCAL_PATH)/prebuilts/audio/etc/snd_soc_msm/snd_soc_msm:system/etc/snd_soc_msm/snd_soc_msm \
-    $(LOCAL_PATH)/prebuilts/audio/etc/snd_soc_msm/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x \
-    $(LOCAL_PATH)/prebuilts/audio/etc/snd_soc_msm/snd_soc_msm_2x_auxpcm:system/etc/snd_soc_msm/snd_soc_msm_2x_auxpcm \
-    $(LOCAL_PATH)/prebuilts/audio/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3 \
-    $(LOCAL_PATH)/prebuilts/audio/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3_auxpcm:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3_auxpcm \
-    $(LOCAL_PATH)/prebuilts/audio/etc/snd_soc_msm/snd_soc_msm_auxpcm:system/etc/snd_soc_msm/snd_soc_msm_auxpcm \
-    $(LOCAL_PATH)/prebuilts/audio/etc/snd_soc_msm/snd_soc_msm_Sitar:system/etc/snd_soc_msm/snd_soc_msm_Sitar \
-    $(LOCAL_PATH)/prebuilts/audio/etc/snd_soc_msm/snd_soc_msm_Sitar_auxpcm:system/etc/snd_soc_msm/snd_soc_msm_Sitar_auxpcm \
-    $(LOCAL_PATH)/prebuilts/audio/etc/snd_soc_msm/snd_soc_msm_Taiko:system/etc/snd_soc_msm/snd_soc_msm_Taiko \
-    $(LOCAL_PATH)/prebuilts/audio/etc/srs/srsmodels.lic:system/etc/srs/srsmodels.lic \
-    $(LOCAL_PATH)/prebuilts/audio/etc/srs/srs_processing.cfg:system/etc/srs/srs_processing.cfg \
-    $(LOCAL_PATH)/prebuilts/audio/lib/libacdbloader.so:system/lib/libacdbloader.so \
-    $(LOCAL_PATH)/prebuilts/audio/lib/libaudcal.so:system/lib/libaudcal.so \
-    $(LOCAL_PATH)/prebuilts/audio/lib/libcsd-client.so:system/lib/libcsd-client.so \
-    $(LOCAL_PATH)/prebuilts/audio/lib/hw/audio.primary.mpq8064.so:system/lib/hw/audio.primary.mpq8064.so \
-    $(LOCAL_PATH)/prebuilts/audio/lib/hw/audio_policy.mpq8064.so:system/lib/hw/audio_policy.mpq8064.so
 
 
 
