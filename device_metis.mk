@@ -305,6 +305,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
+ADDITIONAL_DEFAULT_PROPERTIES += persist.service.adb.enable=1                                                    
+ADDITIONAL_DEFAULT_PROPERTIES += persist.service.debuggable=1
+
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_metis
